@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/ui.css';
-// import {signInWithGoogle } from "./Firebase";
+import {signInWithGoogle} from "./Firebase";
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <h2>Figma Auth Test</h2>
-      <button id="create" onClick={onCancel}>
+      <button id="create" onClick={signInWithGoogle}>
         Sign In With Google
       </button>
       <br/>

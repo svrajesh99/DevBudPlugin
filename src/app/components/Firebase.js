@@ -1,13 +1,11 @@
 import { initializeApp } from 'firebase/app';
-​​import {
-  ​​  GoogleAuthProvider,
-  ​​  getAuth,
-  ​​  signInWithPopup,
-  ​​  signInWithEmailAndPassword,
-  ​​  createUserWithEmailAndPassword,
-  ​​  sendPasswordResetEmail,
-  ​​  signOut,
-  ​​} from "firebase/auth";
+
+import {
+    GoogleAuthProvider,
+    getAuth,
+    signOut,
+    signInWithPopup
+  } from "firebase/auth"
 
 
 
@@ -26,19 +24,11 @@ const firebaseConfig = {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = async() => {
     try {
       const res = await signInWithPopup(auth, googleProvider);
       const user = res.user;
-      const docs = await getDocs(q);
-      if (docs.docs.length === 0) {
-        await addDoc(collection(db, "users"), {
-          uid: user.uid,
-          name: user.displayName,
-          authProvider: "google",
-          email: user.email,
-        });
-      }
+      console.log(user);
     } catch (err) {
       console.error(err);
       alert(err.message);
