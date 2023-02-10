@@ -17,6 +17,12 @@ button {
   box-shadow: none;
   background: #18a0fb;
   color: white;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-weight: 600;
+}
+#create:hover {
+  background: #0574bd;
 }
 input {
   border: none;
