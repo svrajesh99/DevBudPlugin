@@ -30140,7 +30140,7 @@
 	  }
 	}
 
-	var css_248z$2 = ".ui-module_container__1kCEO {\n  width: 300px;\n  height: 200px;\n}\n\n.ui-module_buttonContainer__pWc4h {\n  display: flex;\n}";
+	var css_248z$2 = ".ui-module_container__1kCEO {\n  width: 300px;\n  height: 200px;\n  margin-left: 35%;\n}\n\n.ui-module_buttonContainer__pWc4h {\n  display: flex;\n}";
 	var styles$1 = {"container":"ui-module_container__1kCEO","buttonContainer":"ui-module_buttonContainer__pWc4h"};
 	styleInject(css_248z$2);
 
@@ -39042,18 +39042,19 @@
 	//   if (element) element.value = '5';
 	//   textbox.current = element;
 	// }, []);
-	var signUp=function signUp(){console.log(email);signUpWithEmail(mainAuth,email,password);};var signUpWithEmail=/*#__PURE__*/function(){var _ref2=_asyncToGenerator(/*#__PURE__*/regenerator.mark(function _callee(mainAuth,email,password){var res;return regenerator.wrap(function _callee$(_context){while(1)switch(_context.prev=_context.next){case 0:_context.next=2;return createUserWithEmailAndPassword(mainAuth,email,password);case 2:res=_context.sent;if(res){setAuth(true);}setEmail("");setPassword("");case 6:case"end":return _context.stop();}},_callee);}));return function signUpWithEmail(_x,_x2,_x3){return _ref2.apply(this,arguments);};}();var signIn=function signIn(){console.log(email);signInWithEmail(mainAuth,email,password);};var signInWithEmail=/*#__PURE__*/function(){var _ref3=_asyncToGenerator(/*#__PURE__*/regenerator.mark(function _callee2(mainAuth,email,password){var res;return regenerator.wrap(function _callee2$(_context2){while(1)switch(_context2.prev=_context2.next){case 0:_context2.next=2;return signInWithEmailAndPassword(mainAuth,email,password);case 2:res=_context2.sent;if(res){setAuth(true);}setEmail("");setPassword("");case 6:case"end":return _context2.stop();}},_callee2);}));return function signInWithEmail(_x4,_x5,_x6){return _ref3.apply(this,arguments);};}();//   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-	// };
-	// React.useEffect(() => {
-	//   // This is how we read messages sent from the plugin controller
-	//   window.onmessage = (event) => {
-	//     const { type, message } = event.data.pluginMessage;
-	//     if (type === 'create-rectangles') {
-	//       console.log(`Figma Says: ${message}`);
+	var signUp=function signUp(){console.log(email);signUpWithEmail(mainAuth,email,password);};var signUpWithEmail=/*#__PURE__*/function(){var _ref2=_asyncToGenerator(/*#__PURE__*/regenerator.mark(function _callee(mainAuth,email,password){var res;return regenerator.wrap(function _callee$(_context){while(1)switch(_context.prev=_context.next){case 0:_context.next=2;return createUserWithEmailAndPassword(mainAuth,email,password);case 2:res=_context.sent;if(res){setAuth(true);}setEmail("");setPassword("");case 6:case"end":return _context.stop();}},_callee);}));return function signUpWithEmail(_x,_x2,_x3){return _ref2.apply(this,arguments);};}();var signIn=function signIn(){console.log(email);signInWithEmail(mainAuth,email,password);};var signInWithEmail=/*#__PURE__*/function(){var _ref3=_asyncToGenerator(/*#__PURE__*/regenerator.mark(function _callee2(mainAuth,email,password){var res;return regenerator.wrap(function _callee2$(_context2){while(1)switch(_context2.prev=_context2.next){case 0:_context2.next=2;return signInWithEmailAndPassword(mainAuth,email,password);case 2:res=_context2.sent;console.log(res);if(res){setAuth(true);}setEmail("");setPassword("");case 7:case"end":return _context2.stop();}},_callee2);}));return function signInWithEmail(_x4,_x5,_x6){return _ref3.apply(this,arguments);};}();// const googleLogin = async () => {
+	//   const result =  await signInWithGoogle();
+	//     setUserName(result?.user?.displayName);
+	//     setPhotoURL(result?.user?.photoURL);
+	//     console.log(result)
+	//     if(result) {
+	//       setAuth(true)
 	//     }
-	//   };
-	// }, []);
-	return/*#__PURE__*/React.createElement("div",null,!auth?/*#__PURE__*/React.createElement("div",{className:styles$1.container},/*#__PURE__*/React.createElement("h2",null,"Login to DevBud"),/*#__PURE__*/React.createElement("p",null,"Email: ",/*#__PURE__*/React.createElement("input",{required:true,onChange:function onChange(e){return setEmail(e.target.value);},value:email,placeholder:"Enter Your Email",type:"text"})),/*#__PURE__*/React.createElement("p",null,"Password: ",/*#__PURE__*/React.createElement("input",{required:true,onChange:function onChange(e){return setPassword(e.target.value);},value:password,placeholder:"Enter your password",type:"password"})),/*#__PURE__*/React.createElement("div",{className:styles$1.buttonContainer},/*#__PURE__*/React.createElement(Button,{onClick:signUp},"Sign Up"),/*#__PURE__*/React.createElement(Button,{onClick:signIn},"Sign In"))):/*#__PURE__*/React.createElement(Devbud,null));};
+	//   }
+	// const onCancel = () => {
+	//   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
+	// };
+	return/*#__PURE__*/React.createElement("div",{className:styles$1.container},!auth?/*#__PURE__*/React.createElement("div",null,/*#__PURE__*/React.createElement("h2",null,"Login to DevBud"),/*#__PURE__*/React.createElement("p",null,"Email: ",/*#__PURE__*/React.createElement("input",{required:true,onChange:function onChange(e){return setEmail(e.target.value);},value:email,placeholder:"Enter Your Email",type:"text"})),/*#__PURE__*/React.createElement("p",null,"Password: ",/*#__PURE__*/React.createElement("input",{required:true,onChange:function onChange(e){return setPassword(e.target.value);},value:password,placeholder:"Enter your password",type:"password"})),/*#__PURE__*/React.createElement("div",{className:styles$1.buttonContainer},/*#__PURE__*/React.createElement(Button,{onClick:signUp},"Sign Up"),/*#__PURE__*/React.createElement(Button,{onClick:signIn},"Sign In"))):/*#__PURE__*/React.createElement(Devbud,null));};
 
 	var css_248z = "* {\n  font-family: \"Open Sans\", sans-serif;\n  color: #212121;\n}";
 	styleInject(css_248z);
