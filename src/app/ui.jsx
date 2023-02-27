@@ -65,22 +65,22 @@ const UI = ({ }) => {
   //     }
   //   }
 
-  // const onCancel = () => {
-  //   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-  // };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.Container}>
       {!auth ?
 
-        <div>
-          <h2>Login to DevBud</h2>
+        <div className={styles.loginContainer}>
+          <h2 className={styles.Title}>Login to DevBud</h2>
+        <div className={styles.loginFields}> 
           <p>
-            Email: <input required onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter Your Email" type="text" />
+           <input className={styles.input} required onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter Your Email" type="text" />
           </p>
           <p>
-            Password: <input required onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter your password" type="password" />
-          </p>
+           <input className={styles.input} required onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter your password" type="password" />
+          </p> 
+          </div>
+
           <div className={styles.buttonContainer}>
             <Button onClick={signUp}>Sign Up</Button>
             <Button onClick={signIn}>Sign In</Button>

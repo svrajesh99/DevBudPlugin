@@ -1,11 +1,59 @@
 @import './styles/variables.scss';
 
-.container {
-  width: $FIGMA-UI-WIDTH;
-  height: $FIGMA-UI-HEIGHT;
-  margin-left: 35%;
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.devbudContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Container {
+  // width: $FIGMA-UI-WIDTH;
+  // height: $FIGMA-UI-HEIGHT;
+  background-color: rgb(255, 139, 255);
+  height: 96vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .Title {
+    color: rgb(16, 125, 234);
+    font-family: cursive;
+    font-size: 40px;
+  }
+
+  .loginFields {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: -20px;
+  }
+
+  .input {
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid rgb(16, 125, 234);
+    outline: none;
+    color:rgb(16, 125, 234);
+    font-family: cursive;
+    font-size: 15px;
   }
 
 .buttonContainer {
   display: flex;
+}
+
+.image {
+  width: 65%;
+  height: 65%;
+  margin: 20px;
 }

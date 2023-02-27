@@ -30150,8 +30150,8 @@
 	  }
 	}
 
-	var css_248z$2 = ".ui-module_container__1kCEO {\n  width: 300px;\n  height: 200px;\n  margin-left: 35%;\n}\n\n.ui-module_buttonContainer__pWc4h {\n  display: flex;\n}";
-	var styles$1 = {"container":"ui-module_container__1kCEO","buttonContainer":"ui-module_buttonContainer__pWc4h"};
+	var css_248z$2 = ".ui-module_loginContainer__6P4qe {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_devbudContainer__wQl-n {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_Container__ry951 {\n  background-color: rgb(255, 139, 255);\n  height: 96vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_Title__906wN {\n  color: rgb(16, 125, 234);\n  font-family: cursive;\n  font-size: 40px;\n}\n\n.ui-module_loginFields__nusVr {\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  margin-top: -20px;\n}\n\n.ui-module_input__kkIcm {\n  width: 200px;\n  height: 50px;\n  border-radius: 10px;\n  border: 2px solid rgb(16, 125, 234);\n  outline: none;\n  color: rgb(16, 125, 234);\n  font-family: cursive;\n  font-size: 15px;\n}\n\n.ui-module_buttonContainer__pWc4h {\n  display: flex;\n}\n\n.ui-module_image__hrTow {\n  width: 65%;\n  height: 65%;\n  margin: 20px;\n}";
+	var styles$1 = {"loginContainer":"ui-module_loginContainer__6P4qe","devbudContainer":"ui-module_devbudContainer__wQl-n","Container":"ui-module_Container__ry951","Title":"ui-module_Title__906wN","loginFields":"ui-module_loginFields__nusVr","input":"ui-module_input__kkIcm","buttonContainer":"ui-module_buttonContainer__pWc4h","image":"ui-module_image__hrTow"};
 	styleInject(css_248z$2);
 
 	var css_248z$1 = ".Button-module_base__FXU91 {\n  box-shadow: none;\n  border-radius: 5px;\n  padding: 8px 15px;\n  margin: 0 5px;\n  outline: none;\n  border-radius: 5px;\n}\n\n.Button-module_primary__X7YKF {\n  background-color: #18a0fb;\n  color: #ffffff;\n  border: none;\n}\n.Button-module_primary__X7YKF:hover {\n  background-color: #0376c3;\n  cursor: pointer;\n}\n\n.Button-module_secondary__oecUS {\n  background-color: #ffffff;\n  color: #18a0fb;\n  border: 2px solid #18a0fb;\n}\n.Button-module_secondary__oecUS:hover {\n  border-color: #0376c3;\n  cursor: pointer;\n  text-decoration: underline;\n}";
@@ -39046,7 +39046,12 @@
 	var firebaseConfig={apiKey:"AIzaSyBdlKPdu6ay8FHV5c4adHoe_gqOaEEroW4",authDomain:"authtestfigma.firebaseapp.com",projectId:"authtestfigma",storageBucket:"authtestfigma.appspot.com",messagingSenderId:"236293878739",appId:"1:236293878739:web:492a006b7a32fcbcc43526"};// Initialize Firebase
 	initializeApp(firebaseConfig);new GoogleAuthProvider();getAuth();
 
-	var Devbud=function Devbud(){return/*#__PURE__*/React.createElement("div",null,/*#__PURE__*/React.createElement("h2",null,"Congrats! Logged in Successfully"));};
+	var Devbud=function Devbud(){var _useState=react.exports.useState(""),_useState2=_slicedToArray(_useState,2),imageURL=_useState2[0],setImageURL=_useState2[1];var clone=function clone(){parent.postMessage({pluginMessage:{type:'clone'}},'*');};react.exports.useEffect(function(){// This is how we read messages sent from the plugin controller
+	window.onmessage=function(event){var _event$data$pluginMes;var imgData=(_event$data$pluginMes=event.data.pluginMessage)===null||_event$data$pluginMes===void 0?void 0:_event$data$pluginMes.bytesData;// var arrayBufferView = new Uint8Array(imgData);
+	// var blob = new Blob([arrayBufferView], { type: "image/png" });
+	// var urlCreator = window.URL || window.webkitURL;
+	// var imageUrl = urlCreator.createObjectURL(blob);
+	var uint8ToBase64=function uint8ToBase64(imgData){return btoa(Array(imgData.length).fill('').map(function(_,i){return String.fromCharCode(imgData[i]);}).join(''));};var uint8data=uint8ToBase64(imgData);var finalEncodedData="data:image/*;base64,".concat(uint8data);setImageURL(finalEncodedData);};},[]);return/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},/*#__PURE__*/React.createElement("h2",null,"Congrats! Logged in Successfully"),/*#__PURE__*/React.createElement(Button,{onClick:clone},"Clone"),imageURL?/*#__PURE__*/React.createElement("img",{className:styles$1.image,src:imageURL,alt:"Component"}):/*#__PURE__*/React.createElement(React.Fragment,null));};
 
 	var UI=function UI(_ref){_objectDestructuringEmpty(_ref);var _useState=react.exports.useState(),_useState2=_slicedToArray(_useState,2),email=_useState2[0],setEmail=_useState2[1];var _useState3=react.exports.useState(),_useState4=_slicedToArray(_useState3,2),password=_useState4[0],setPassword=_useState4[1];var _useState5=react.exports.useState(false),_useState6=_slicedToArray(_useState5,2),auth=_useState6[0],setAuth=_useState6[1];var mainAuth=getAuth();// const countRef = React.useCallback((element) => {
 	//   if (element) element.value = '5';
@@ -39061,10 +39066,7 @@
 	//       setAuth(true)
 	//     }
 	//   }
-	// const onCancel = () => {
-	//   parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
-	// };
-	return/*#__PURE__*/React.createElement("div",{className:styles$1.container},!auth?/*#__PURE__*/React.createElement("div",null,/*#__PURE__*/React.createElement("h2",null,"Login to DevBud"),/*#__PURE__*/React.createElement("p",null,"Email: ",/*#__PURE__*/React.createElement("input",{required:true,onChange:function onChange(e){return setEmail(e.target.value);},value:email,placeholder:"Enter Your Email",type:"text"})),/*#__PURE__*/React.createElement("p",null,"Password: ",/*#__PURE__*/React.createElement("input",{required:true,onChange:function onChange(e){return setPassword(e.target.value);},value:password,placeholder:"Enter your password",type:"password"})),/*#__PURE__*/React.createElement("div",{className:styles$1.buttonContainer},/*#__PURE__*/React.createElement(Button,{onClick:signUp},"Sign Up"),/*#__PURE__*/React.createElement(Button,{onClick:signIn},"Sign In"))):/*#__PURE__*/React.createElement(Devbud,null));};
+	return/*#__PURE__*/React.createElement("div",{className:styles$1.Container},!auth?/*#__PURE__*/React.createElement("div",{className:styles$1.loginContainer},/*#__PURE__*/React.createElement("h2",{className:styles$1.Title},"Login to DevBud"),/*#__PURE__*/React.createElement("div",{className:styles$1.loginFields},/*#__PURE__*/React.createElement("p",null,/*#__PURE__*/React.createElement("input",{className:styles$1.input,required:true,onChange:function onChange(e){return setEmail(e.target.value);},value:email,placeholder:"Enter Your Email",type:"text"})),/*#__PURE__*/React.createElement("p",null,/*#__PURE__*/React.createElement("input",{className:styles$1.input,required:true,onChange:function onChange(e){return setPassword(e.target.value);},value:password,placeholder:"Enter your password",type:"password"}))),/*#__PURE__*/React.createElement("div",{className:styles$1.buttonContainer},/*#__PURE__*/React.createElement(Button,{onClick:signUp},"Sign Up"),/*#__PURE__*/React.createElement(Button,{onClick:signIn},"Sign In"))):/*#__PURE__*/React.createElement(Devbud,null));};
 
 	var css_248z = "* {\n  font-family: \"Open Sans\", sans-serif;\n  color: #212121;\n}";
 	styleInject(css_248z);
