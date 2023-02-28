@@ -29684,37 +29684,6 @@
 
 	var ReactDOM = reactDom.exports;
 
-	function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-	  try {
-	    var info = gen[key](arg);
-	    var value = info.value;
-	  } catch (error) {
-	    reject(error);
-	    return;
-	  }
-	  if (info.done) {
-	    resolve(value);
-	  } else {
-	    Promise.resolve(value).then(_next, _throw);
-	  }
-	}
-	function _asyncToGenerator(fn) {
-	  return function () {
-	    var self = this,
-	      args = arguments;
-	    return new Promise(function (resolve, reject) {
-	      var gen = fn.apply(self, args);
-	      function _next(value) {
-	        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-	      }
-	      function _throw(err) {
-	        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-	      }
-	      _next(undefined);
-	    });
-	  };
-	}
-
 	function _arrayWithHoles(arr) {
 	  if (Array.isArray(arr)) return arr;
 	}
@@ -30100,7 +30069,6 @@
 	// TODO(Babel 8): Remove this file.
 
 	var runtime = regeneratorRuntime$1.exports();
-	var regenerator = runtime;
 
 	// Copied from https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js#L736=
 	try {
@@ -30140,8 +30108,8 @@
 	  }
 	}
 
-	var css_248z$2 = ".ui-module_loginContainer__6P4qe {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_devbudContainer__wQl-n {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_Container__ry951 {\n  background-color: rgb(255, 139, 255);\n  height: 96vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_Title__906wN {\n  color: rgb(16, 125, 234);\n  font-family: cursive;\n  font-size: 40px;\n}\n\n.ui-module_loginFields__nusVr {\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  margin-top: -20px;\n}\n\n.ui-module_input__kkIcm {\n  width: 200px;\n  height: 50px;\n  border-radius: 10px;\n  border: 2px solid rgb(16, 125, 234);\n  outline: none;\n  color: rgb(16, 125, 234);\n  font-family: cursive;\n  font-size: 15px;\n}\n\n.ui-module_buttonContainer__pWc4h {\n  display: flex;\n}\n\n.ui-module_image__hrTow {\n  width: 65%;\n  height: 65%;\n  margin: 20px;\n}";
-	var styles$1 = {"loginContainer":"ui-module_loginContainer__6P4qe","devbudContainer":"ui-module_devbudContainer__wQl-n","Container":"ui-module_Container__ry951","Title":"ui-module_Title__906wN","loginFields":"ui-module_loginFields__nusVr","input":"ui-module_input__kkIcm","buttonContainer":"ui-module_buttonContainer__pWc4h","image":"ui-module_image__hrTow"};
+	var css_248z$2 = ".ui-module_loginContainer__6P4qe {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_devbudContainer__wQl-n {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_Container__ry951 {\n  background-color: rgb(241, 195, 241);\n  height: 96vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.ui-module_devbudTitle__fULSt {\n  color: rgb(16, 125, 234);\n  font-family: cursive;\n  font-size: 40px;\n}\n\n.ui-module_Title__906wN {\n  color: rgb(16, 125, 234);\n  font-family: cursive;\n  font-size: 40px;\n}\n\n.ui-module_loginFields__nusVr {\n  display: flex;\n  flex-direction: column;\n  align-items: start;\n  margin-top: -20px;\n}\n\n.ui-module_input__kkIcm {\n  width: 200px;\n  height: 50px;\n  border-radius: 10px;\n  border: 2px solid rgb(16, 125, 234);\n  outline: none;\n  color: rgb(16, 125, 234);\n  font-family: cursive;\n  font-size: 15px;\n}\n\n.ui-module_buttonContainer__pWc4h {\n  display: flex;\n}\n\n.ui-module_image__hrTow {\n  width: 65%;\n  height: 65%;\n  margin: 20px;\n}";
+	var styles$1 = {"loginContainer":"ui-module_loginContainer__6P4qe","devbudContainer":"ui-module_devbudContainer__wQl-n","Container":"ui-module_Container__ry951","devbudTitle":"ui-module_devbudTitle__fULSt","Title":"ui-module_Title__906wN","loginFields":"ui-module_loginFields__nusVr","input":"ui-module_input__kkIcm","buttonContainer":"ui-module_buttonContainer__pWc4h","image":"ui-module_image__hrTow"};
 	styleInject(css_248z$2);
 
 	var css_248z$1 = ".Button-module_base__FXU91 {\n  box-shadow: none;\n  border-radius: 5px;\n  padding: 8px 15px;\n  margin: 0 5px;\n  outline: none;\n  border-radius: 5px;\n}\n\n.Button-module_primary__X7YKF {\n  background-color: #18a0fb;\n  color: #ffffff;\n  border: none;\n}\n.Button-module_primary__X7YKF:hover {\n  background-color: #0376c3;\n  cursor: pointer;\n}\n\n.Button-module_secondary__oecUS {\n  background-color: #ffffff;\n  color: #18a0fb;\n  border: 2px solid #18a0fb;\n}\n.Button-module_secondary__oecUS:hover {\n  border-color: #0376c3;\n  cursor: pointer;\n  text-decoration: underline;\n}";
@@ -30950,32 +30918,6 @@
 	        }
 	    }
 	    return params.length ? '&' + params.join('&') : '';
-	}
-	/**
-	 * Decodes a querystring (e.g. ?arg=val&arg2=val2) into a params object
-	 * (e.g. {arg: 'val', arg2: 'val2'})
-	 */
-	function querystringDecode(querystring) {
-	    const obj = {};
-	    const tokens = querystring.replace(/^\?/, '').split('&');
-	    tokens.forEach(token => {
-	        if (token) {
-	            const [key, value] = token.split('=');
-	            obj[decodeURIComponent(key)] = decodeURIComponent(value);
-	        }
-	    });
-	    return obj;
-	}
-	/**
-	 * Extract the query string part of a URL, including the leading question mark (if present).
-	 */
-	function extractQuerystring(url) {
-	    const queryStart = url.indexOf('?');
-	    if (!queryStart) {
-	        return '';
-	    }
-	    const fragmentStart = url.indexOf('#', queryStart);
-	    return url.substring(queryStart, fragmentStart > 0 ? fragmentStart : undefined);
 	}
 
 	/**
@@ -35314,173 +35256,6 @@
 	        return debugFail('not implemented');
 	    }
 	}
-	async function updateEmailPassword(auth, request) {
-	    return _performApiRequest(auth, "POST" /* HttpMethod.POST */, "/v1/accounts:update" /* Endpoint.SET_ACCOUNT_INFO */, request);
-	}
-
-	/**
-	 * @license
-	 * Copyright 2020 Google LLC
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *   http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
-	async function signInWithPassword(auth, request) {
-	    return _performSignInRequest(auth, "POST" /* HttpMethod.POST */, "/v1/accounts:signInWithPassword" /* Endpoint.SIGN_IN_WITH_PASSWORD */, _addTidIfNecessary(auth, request));
-	}
-
-	/**
-	 * @license
-	 * Copyright 2020 Google LLC
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *   http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
-	async function signInWithEmailLink$1(auth, request) {
-	    return _performSignInRequest(auth, "POST" /* HttpMethod.POST */, "/v1/accounts:signInWithEmailLink" /* Endpoint.SIGN_IN_WITH_EMAIL_LINK */, _addTidIfNecessary(auth, request));
-	}
-	async function signInWithEmailLinkForLinking(auth, request) {
-	    return _performSignInRequest(auth, "POST" /* HttpMethod.POST */, "/v1/accounts:signInWithEmailLink" /* Endpoint.SIGN_IN_WITH_EMAIL_LINK */, _addTidIfNecessary(auth, request));
-	}
-
-	/**
-	 * @license
-	 * Copyright 2020 Google LLC
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *   http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
-	/**
-	 * Interface that represents the credentials returned by {@link EmailAuthProvider} for
-	 * {@link ProviderId}.PASSWORD
-	 *
-	 * @remarks
-	 * Covers both {@link SignInMethod}.EMAIL_PASSWORD and
-	 * {@link SignInMethod}.EMAIL_LINK.
-	 *
-	 * @public
-	 */
-	class EmailAuthCredential extends AuthCredential {
-	    /** @internal */
-	    constructor(
-	    /** @internal */
-	    _email, 
-	    /** @internal */
-	    _password, signInMethod, 
-	    /** @internal */
-	    _tenantId = null) {
-	        super("password" /* ProviderId.PASSWORD */, signInMethod);
-	        this._email = _email;
-	        this._password = _password;
-	        this._tenantId = _tenantId;
-	    }
-	    /** @internal */
-	    static _fromEmailAndPassword(email, password) {
-	        return new EmailAuthCredential(email, password, "password" /* SignInMethod.EMAIL_PASSWORD */);
-	    }
-	    /** @internal */
-	    static _fromEmailAndCode(email, oobCode, tenantId = null) {
-	        return new EmailAuthCredential(email, oobCode, "emailLink" /* SignInMethod.EMAIL_LINK */, tenantId);
-	    }
-	    /** {@inheritdoc AuthCredential.toJSON} */
-	    toJSON() {
-	        return {
-	            email: this._email,
-	            password: this._password,
-	            signInMethod: this.signInMethod,
-	            tenantId: this._tenantId
-	        };
-	    }
-	    /**
-	     * Static method to deserialize a JSON representation of an object into an {@link  AuthCredential}.
-	     *
-	     * @param json - Either `object` or the stringified representation of the object. When string is
-	     * provided, `JSON.parse` would be called first.
-	     *
-	     * @returns If the JSON input does not represent an {@link AuthCredential}, null is returned.
-	     */
-	    static fromJSON(json) {
-	        const obj = typeof json === 'string' ? JSON.parse(json) : json;
-	        if ((obj === null || obj === void 0 ? void 0 : obj.email) && (obj === null || obj === void 0 ? void 0 : obj.password)) {
-	            if (obj.signInMethod === "password" /* SignInMethod.EMAIL_PASSWORD */) {
-	                return this._fromEmailAndPassword(obj.email, obj.password);
-	            }
-	            else if (obj.signInMethod === "emailLink" /* SignInMethod.EMAIL_LINK */) {
-	                return this._fromEmailAndCode(obj.email, obj.password, obj.tenantId);
-	            }
-	        }
-	        return null;
-	    }
-	    /** @internal */
-	    async _getIdTokenResponse(auth) {
-	        switch (this.signInMethod) {
-	            case "password" /* SignInMethod.EMAIL_PASSWORD */:
-	                return signInWithPassword(auth, {
-	                    returnSecureToken: true,
-	                    email: this._email,
-	                    password: this._password
-	                });
-	            case "emailLink" /* SignInMethod.EMAIL_LINK */:
-	                return signInWithEmailLink$1(auth, {
-	                    email: this._email,
-	                    oobCode: this._password
-	                });
-	            default:
-	                _fail(auth, "internal-error" /* AuthErrorCode.INTERNAL_ERROR */);
-	        }
-	    }
-	    /** @internal */
-	    async _linkToIdToken(auth, idToken) {
-	        switch (this.signInMethod) {
-	            case "password" /* SignInMethod.EMAIL_PASSWORD */:
-	                return updateEmailPassword(auth, {
-	                    idToken,
-	                    returnSecureToken: true,
-	                    email: this._email,
-	                    password: this._password
-	                });
-	            case "emailLink" /* SignInMethod.EMAIL_LINK */:
-	                return signInWithEmailLinkForLinking(auth, {
-	                    idToken,
-	                    email: this._email,
-	                    oobCode: this._password
-	                });
-	            default:
-	                _fail(auth, "internal-error" /* AuthErrorCode.INTERNAL_ERROR */);
-	        }
-	    }
-	    /** @internal */
-	    _getReauthenticationResolver(auth) {
-	        return this._getIdTokenResponse(auth);
-	    }
-	}
 
 	/**
 	 * @license
@@ -35641,201 +35416,6 @@
 	        return request;
 	    }
 	}
-
-	/**
-	 * @license
-	 * Copyright 2020 Google LLC
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *   http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
-	/**
-	 * Maps the mode string in action code URL to Action Code Info operation.
-	 *
-	 * @param mode
-	 */
-	function parseMode(mode) {
-	    switch (mode) {
-	        case 'recoverEmail':
-	            return "RECOVER_EMAIL" /* ActionCodeOperation.RECOVER_EMAIL */;
-	        case 'resetPassword':
-	            return "PASSWORD_RESET" /* ActionCodeOperation.PASSWORD_RESET */;
-	        case 'signIn':
-	            return "EMAIL_SIGNIN" /* ActionCodeOperation.EMAIL_SIGNIN */;
-	        case 'verifyEmail':
-	            return "VERIFY_EMAIL" /* ActionCodeOperation.VERIFY_EMAIL */;
-	        case 'verifyAndChangeEmail':
-	            return "VERIFY_AND_CHANGE_EMAIL" /* ActionCodeOperation.VERIFY_AND_CHANGE_EMAIL */;
-	        case 'revertSecondFactorAddition':
-	            return "REVERT_SECOND_FACTOR_ADDITION" /* ActionCodeOperation.REVERT_SECOND_FACTOR_ADDITION */;
-	        default:
-	            return null;
-	    }
-	}
-	/**
-	 * Helper to parse FDL links
-	 *
-	 * @param url
-	 */
-	function parseDeepLink(url) {
-	    const link = querystringDecode(extractQuerystring(url))['link'];
-	    // Double link case (automatic redirect).
-	    const doubleDeepLink = link
-	        ? querystringDecode(extractQuerystring(link))['deep_link_id']
-	        : null;
-	    // iOS custom scheme links.
-	    const iOSDeepLink = querystringDecode(extractQuerystring(url))['deep_link_id'];
-	    const iOSDoubleDeepLink = iOSDeepLink
-	        ? querystringDecode(extractQuerystring(iOSDeepLink))['link']
-	        : null;
-	    return iOSDoubleDeepLink || iOSDeepLink || doubleDeepLink || link || url;
-	}
-	/**
-	 * A utility class to parse email action URLs such as password reset, email verification,
-	 * email link sign in, etc.
-	 *
-	 * @public
-	 */
-	class ActionCodeURL {
-	    /**
-	     * @param actionLink - The link from which to extract the URL.
-	     * @returns The {@link ActionCodeURL} object, or null if the link is invalid.
-	     *
-	     * @internal
-	     */
-	    constructor(actionLink) {
-	        var _a, _b, _c, _d, _e, _f;
-	        const searchParams = querystringDecode(extractQuerystring(actionLink));
-	        const apiKey = (_a = searchParams["apiKey" /* QueryField.API_KEY */]) !== null && _a !== void 0 ? _a : null;
-	        const code = (_b = searchParams["oobCode" /* QueryField.CODE */]) !== null && _b !== void 0 ? _b : null;
-	        const operation = parseMode((_c = searchParams["mode" /* QueryField.MODE */]) !== null && _c !== void 0 ? _c : null);
-	        // Validate API key, code and mode.
-	        _assert(apiKey && code && operation, "argument-error" /* AuthErrorCode.ARGUMENT_ERROR */);
-	        this.apiKey = apiKey;
-	        this.operation = operation;
-	        this.code = code;
-	        this.continueUrl = (_d = searchParams["continueUrl" /* QueryField.CONTINUE_URL */]) !== null && _d !== void 0 ? _d : null;
-	        this.languageCode = (_e = searchParams["languageCode" /* QueryField.LANGUAGE_CODE */]) !== null && _e !== void 0 ? _e : null;
-	        this.tenantId = (_f = searchParams["tenantId" /* QueryField.TENANT_ID */]) !== null && _f !== void 0 ? _f : null;
-	    }
-	    /**
-	     * Parses the email action link string and returns an {@link ActionCodeURL} if the link is valid,
-	     * otherwise returns null.
-	     *
-	     * @param link  - The email action link string.
-	     * @returns The {@link ActionCodeURL} object, or null if the link is invalid.
-	     *
-	     * @public
-	     */
-	    static parseLink(link) {
-	        const actionLink = parseDeepLink(link);
-	        try {
-	            return new ActionCodeURL(actionLink);
-	        }
-	        catch (_a) {
-	            return null;
-	        }
-	    }
-	}
-
-	/**
-	 * @license
-	 * Copyright 2020 Google LLC
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *   http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
-	/**
-	 * Provider for generating {@link EmailAuthCredential}.
-	 *
-	 * @public
-	 */
-	class EmailAuthProvider {
-	    constructor() {
-	        /**
-	         * Always set to {@link ProviderId}.PASSWORD, even for email link.
-	         */
-	        this.providerId = EmailAuthProvider.PROVIDER_ID;
-	    }
-	    /**
-	     * Initialize an {@link AuthCredential} using an email and password.
-	     *
-	     * @example
-	     * ```javascript
-	     * const authCredential = EmailAuthProvider.credential(email, password);
-	     * const userCredential = await signInWithCredential(auth, authCredential);
-	     * ```
-	     *
-	     * @example
-	     * ```javascript
-	     * const userCredential = await signInWithEmailAndPassword(auth, email, password);
-	     * ```
-	     *
-	     * @param email - Email address.
-	     * @param password - User account password.
-	     * @returns The auth provider credential.
-	     */
-	    static credential(email, password) {
-	        return EmailAuthCredential._fromEmailAndPassword(email, password);
-	    }
-	    /**
-	     * Initialize an {@link AuthCredential} using an email and an email link after a sign in with
-	     * email link operation.
-	     *
-	     * @example
-	     * ```javascript
-	     * const authCredential = EmailAuthProvider.credentialWithLink(auth, email, emailLink);
-	     * const userCredential = await signInWithCredential(auth, authCredential);
-	     * ```
-	     *
-	     * @example
-	     * ```javascript
-	     * await sendSignInLinkToEmail(auth, email);
-	     * // Obtain emailLink from user.
-	     * const userCredential = await signInWithEmailLink(auth, email, emailLink);
-	     * ```
-	     *
-	     * @param auth - The {@link Auth} instance used to verify the link.
-	     * @param email - Email address.
-	     * @param emailLink - Sign-in email link.
-	     * @returns - The auth provider credential.
-	     */
-	    static credentialWithLink(email, emailLink) {
-	        const actionCodeUrl = ActionCodeURL.parseLink(emailLink);
-	        _assert(actionCodeUrl, "argument-error" /* AuthErrorCode.ARGUMENT_ERROR */);
-	        return EmailAuthCredential._fromEmailAndCode(email, actionCodeUrl.code, actionCodeUrl.tenantId);
-	    }
-	}
-	/**
-	 * Always set to {@link ProviderId}.PASSWORD, even for email link.
-	 */
-	EmailAuthProvider.PROVIDER_ID = "password" /* ProviderId.PASSWORD */;
-	/**
-	 * Always set to {@link SignInMethod}.EMAIL_PASSWORD.
-	 */
-	EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD = "password" /* SignInMethod.EMAIL_PASSWORD */;
-	/**
-	 * Always set to {@link SignInMethod}.EMAIL_LINK.
-	 */
-	EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD = "emailLink" /* SignInMethod.EMAIL_LINK */;
 
 	/**
 	 * @license
@@ -36426,26 +36006,6 @@
 	 * See the License for the specific language governing permissions and
 	 * limitations under the License.
 	 */
-	async function signUp(auth, request) {
-	    return _performSignInRequest(auth, "POST" /* HttpMethod.POST */, "/v1/accounts:signUp" /* Endpoint.SIGN_UP */, _addTidIfNecessary(auth, request));
-	}
-
-	/**
-	 * @license
-	 * Copyright 2020 Google LLC
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *   http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 */
 	class UserCredentialImpl {
 	    constructor(params) {
 	        this.user = params.user;
@@ -36597,67 +36157,6 @@
 	        await auth._updateCurrentUser(userCredential.user);
 	    }
 	    return userCredential;
-	}
-	/**
-	 * Asynchronously signs in with the given credentials.
-	 *
-	 * @remarks
-	 * An {@link AuthProvider} can be used to generate the credential.
-	 *
-	 * @param auth - The {@link Auth} instance.
-	 * @param credential - The auth credential.
-	 *
-	 * @public
-	 */
-	async function signInWithCredential(auth, credential) {
-	    return _signInWithCredential(_castAuth(auth), credential);
-	}
-	/**
-	 * Creates a new user account associated with the specified email address and password.
-	 *
-	 * @remarks
-	 * On successful creation of the user account, this user will also be signed in to your application.
-	 *
-	 * User account creation can fail if the account already exists or the password is invalid.
-	 *
-	 * Note: The email address acts as a unique identifier for the user and enables an email-based
-	 * password reset. This function will create a new user account and set the initial user password.
-	 *
-	 * @param auth - The {@link Auth} instance.
-	 * @param email - The user's email address.
-	 * @param password - The user's chosen password.
-	 *
-	 * @public
-	 */
-	async function createUserWithEmailAndPassword(auth, email, password) {
-	    const authInternal = _castAuth(auth);
-	    const response = await signUp(authInternal, {
-	        returnSecureToken: true,
-	        email,
-	        password
-	    });
-	    const userCredential = await UserCredentialImpl._fromIdTokenResponse(authInternal, "signIn" /* OperationType.SIGN_IN */, response);
-	    await authInternal._updateCurrentUser(userCredential.user);
-	    return userCredential;
-	}
-	/**
-	 * Asynchronously signs in using an email and password.
-	 *
-	 * @remarks
-	 * Fails with an error if the email address and password do not match.
-	 *
-	 * Note: The user's password is NOT the password used to access the user's email account. The
-	 * email address serves as a unique identifier for the user, and the password is used to access
-	 * the user's account in your Firebase project. See also: {@link createUserWithEmailAndPassword}.
-	 *
-	 * @param auth - The {@link Auth} instance.
-	 * @param email - The users email address.
-	 * @param password - The users password.
-	 *
-	 * @public
-	 */
-	function signInWithEmailAndPassword(auth, email, password) {
-	    return signInWithCredential(getModularInstance(auth), EmailAuthProvider.credential(email, password));
 	}
 	/**
 	 * Adds an observer for changes to the signed-in user's ID token.
@@ -39037,17 +38536,45 @@
 	initializeApp(firebaseConfig);new GoogleAuthProvider();getAuth();
 
 	var Devbud=function Devbud(){var _useState=react.exports.useState(""),_useState2=_slicedToArray(_useState,2),imageURL=_useState2[0],setImageURL=_useState2[1];var clone=function clone(){parent.postMessage({pluginMessage:{type:'clone'}},'*');};react.exports.useEffect(function(){// This is how we read messages sent from the plugin controller
-	window.onmessage=function(event){var _event$data$pluginMes;var imgData=(_event$data$pluginMes=event.data.pluginMessage)===null||_event$data$pluginMes===void 0?void 0:_event$data$pluginMes.bytesData;// var arrayBufferView = new Uint8Array(imgData);
-	// var blob = new Blob([arrayBufferView], { type: "image/png" });
-	// var urlCreator = window.URL || window.webkitURL;
-	// var imageUrl = urlCreator.createObjectURL(blob);
-	var uint8ToBase64=function uint8ToBase64(imgData){return btoa(Array(imgData.length).fill('').map(function(_,i){return String.fromCharCode(imgData[i]);}).join(''));};var uint8data=uint8ToBase64(imgData);var finalEncodedData="data:image/*;base64,".concat(uint8data);setImageURL(finalEncodedData);};},[]);return/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},/*#__PURE__*/React.createElement("h2",null,"Congrats! Logged in Successfully"),/*#__PURE__*/React.createElement(Button,{onClick:clone},"Clone"),imageURL?/*#__PURE__*/React.createElement("img",{className:styles$1.image,src:imageURL,alt:"Component"}):/*#__PURE__*/React.createElement(React.Fragment,null));};
+	window.onmessage=function(event){var _event$data$pluginMes;var imgData=(_event$data$pluginMes=event.data.pluginMessage)===null||_event$data$pluginMes===void 0?void 0:_event$data$pluginMes.bytesData;//Converting img bytes to url for displaying
+	var uint8ToBase64=function uint8ToBase64(imgData){return btoa(Array(imgData.length).fill('').map(function(_,i){return String.fromCharCode(imgData[i]);}).join(''));};var uint8data=uint8ToBase64(imgData);var finalEncodedData="data:image/*;base64,".concat(uint8data);setImageURL(finalEncodedData);};},[]);return/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},/*#__PURE__*/React.createElement("h2",{className:styles$1.devbudTitle},"Welcome to DevBud!"),/*#__PURE__*/React.createElement(Button,{onClick:clone},"Clone Component"),imageURL?/*#__PURE__*/React.createElement("img",{className:styles$1.image,src:imageURL,alt:"Component"}):/*#__PURE__*/React.createElement(React.Fragment,null));};
 
-	var UI=function UI(_ref){_objectDestructuringEmpty(_ref);var _useState=react.exports.useState(),_useState2=_slicedToArray(_useState,2),email=_useState2[0],setEmail=_useState2[1];var _useState3=react.exports.useState(),_useState4=_slicedToArray(_useState3,2),password=_useState4[0],setPassword=_useState4[1];var _useState5=react.exports.useState(false),_useState6=_slicedToArray(_useState5,2),auth=_useState6[0],setAuth=_useState6[1];var mainAuth=getAuth();// const countRef = React.useCallback((element) => {
-	//   if (element) element.value = '5';
-	//   textbox.current = element;
-	// }, []);
-	var signUp=function signUp(){console.log(email);signUpWithEmail(mainAuth,email,password);};var signUpWithEmail=/*#__PURE__*/function(){var _ref2=_asyncToGenerator(/*#__PURE__*/regenerator.mark(function _callee(mainAuth,email,password){var res;return regenerator.wrap(function _callee$(_context){while(1)switch(_context.prev=_context.next){case 0:_context.next=2;return createUserWithEmailAndPassword(mainAuth,email,password);case 2:res=_context.sent;if(res){setAuth(true);}setEmail("");setPassword("");case 6:case"end":return _context.stop();}},_callee);}));return function signUpWithEmail(_x,_x2,_x3){return _ref2.apply(this,arguments);};}();var signIn=function signIn(){console.log(email);signInWithEmail(mainAuth,email,password);};var signInWithEmail=/*#__PURE__*/function(){var _ref3=_asyncToGenerator(/*#__PURE__*/regenerator.mark(function _callee2(mainAuth,email,password){var res;return regenerator.wrap(function _callee2$(_context2){while(1)switch(_context2.prev=_context2.next){case 0:_context2.next=2;return signInWithEmailAndPassword(mainAuth,email,password);case 2:res=_context2.sent;console.log(res);if(res){setAuth(true);}setEmail("");setPassword("");case 7:case"end":return _context2.stop();}},_callee2);}));return function signInWithEmail(_x4,_x5,_x6){return _ref3.apply(this,arguments);};}();// const googleLogin = async () => {
+	var UI=function UI(_ref){_objectDestructuringEmpty(_ref);var _useState=react.exports.useState(),_useState2=_slicedToArray(_useState,2);_useState2[0];_useState2[1];var _useState3=react.exports.useState(),_useState4=_slicedToArray(_useState3,2);_useState4[0];_useState4[1];var _useState5=react.exports.useState(false),_useState6=_slicedToArray(_useState5,2),auth=_useState6[0];_useState6[1];getAuth();var _useState7=react.exports.useState(null),_useState8=_slicedToArray(_useState7,2);_useState8[0];_useState8[1];var _useState9=react.exports.useState(null),_useState10=_slicedToArray(_useState9,2);_useState10[0];_useState10[1];// const countRef = React.useCallback((element) => {
+	var googleLogin=function googleLogin(){parent.postMessage({pluginMessage:{type:'login'}},'*');};//   useEffect(() => {
+	//     if (!externalPopup) {
+	//       return;
+	//     }
+	//     const timer = setInterval(() => {
+	//       if (!externalPopup) {
+	//         timer && clearInterval(timer);
+	//         return;
+	//       }
+	//       const currentUrl = externalPopup.location.href;
+	//       if (!currentUrl) {
+	//         return;
+	//       }
+	//       const authorizationCode = new URLSearchParams(window.location.search).get('code');
+	//       if (authorizationCode) {
+	//         setAuth(true)
+	//         externalPopup.close();
+	//         console.log(`The popup URL has URL code param = ${code}`);
+	//         // YourApi.endpoint(code).then(() => {
+	//         //   setAuth(true);
+	//         // })
+	//         //   .catch(() => {
+	//         //     // API error
+	//         //   })
+	//         //   .finally(() => {
+	//         //     // clear timer at the end
+	//         //     setExternalPopup(null);
+	//         //     timer && clearInterval(timer);
+	//         //   })
+	//       }
+	//     }, 500)
+	//   },
+	//   [externalPopup]
+	// )
+	// const firebaseGoogleLogin = async () => {
 	//   const result =  await signInWithGoogle();
 	//     setUserName(result?.user?.displayName);
 	//     setPhotoURL(result?.user?.photoURL);
@@ -39056,7 +38583,7 @@
 	//       setAuth(true)
 	//     }
 	//   }
-	return/*#__PURE__*/React.createElement("div",{className:styles$1.Container},!auth?/*#__PURE__*/React.createElement("div",{className:styles$1.loginContainer},/*#__PURE__*/React.createElement("h2",{className:styles$1.Title},"Login to DevBud"),/*#__PURE__*/React.createElement("div",{className:styles$1.loginFields},/*#__PURE__*/React.createElement("p",null,/*#__PURE__*/React.createElement("input",{className:styles$1.input,required:true,onChange:function onChange(e){return setEmail(e.target.value);},value:email,placeholder:"Enter Your Email",type:"text"})),/*#__PURE__*/React.createElement("p",null,/*#__PURE__*/React.createElement("input",{className:styles$1.input,required:true,onChange:function onChange(e){return setPassword(e.target.value);},value:password,placeholder:"Enter your password",type:"password"}))),/*#__PURE__*/React.createElement("div",{className:styles$1.buttonContainer},/*#__PURE__*/React.createElement(Button,{onClick:signUp},"Sign Up"),/*#__PURE__*/React.createElement(Button,{onClick:signIn},"Sign In"))):/*#__PURE__*/React.createElement(Devbud,null));};
+	return/*#__PURE__*/React.createElement("div",{className:styles$1.Container},!auth?/*#__PURE__*/React.createElement("div",{className:styles$1.loginContainer},/*#__PURE__*/React.createElement("h2",{className:styles$1.Title},"Login to DevBud"),/*#__PURE__*/React.createElement("div",{className:styles$1.buttonContainer},/*#__PURE__*/React.createElement(Button,{onClick:googleLogin},"Login with Google"))):/*#__PURE__*/React.createElement(Devbud,null));};
 
 	var css_248z = "* {\n  font-family: \"Open Sans\", sans-serif;\n  color: #212121;\n}";
 	styleInject(css_248z);

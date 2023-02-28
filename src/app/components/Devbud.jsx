@@ -17,16 +17,8 @@ const Devbud = () => {
       window.onmessage = (event) => {
         
         let imgData=event.data.pluginMessage?.bytesData
-  
-        // var arrayBufferView = new Uint8Array(imgData);
-  
-        // var blob = new Blob([arrayBufferView], { type: "image/png" });
-        // var urlCreator = window.URL || window.webkitURL;
-        // var imageUrl = urlCreator.createObjectURL(blob);
-      
-  
-  
-  
+
+        //Converting img bytes to url for displaying
         const uint8ToBase64 = (imgData) =>
       btoa(
           Array(imgData.length)
@@ -46,8 +38,8 @@ const Devbud = () => {
 
   return (
     <div className={styles.devbudContainer}>
-        <h2>Congrats! Logged in Successfully</h2>
-        <Button onClick={clone}>Clone</Button>
+      <h2 className={styles.devbudTitle}>Welcome to DevBud!</h2>
+        <Button onClick={clone}>Clone Component</Button>
         {imageURL ? 
         <img className={styles.image} src={imageURL} alt="Component" /> : <></> }
     </div>

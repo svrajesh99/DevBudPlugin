@@ -17,11 +17,17 @@
 .Container {
   // width: $FIGMA-UI-WIDTH;
   // height: $FIGMA-UI-HEIGHT;
-  background-color: rgb(255, 139, 255);
+  background-color: rgb(241, 195, 241);
   height: 96vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  }
+
+  .devbudTitle {
+    color: rgb(16, 125, 234);
+    font-family: cursive;
+    font-size: 40px;
   }
 
   .Title {

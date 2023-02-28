@@ -14,6 +14,8 @@ const UI = ({ }) => {
   const [password, setPassword] = useState();
   const [auth, setAuth] = useState(false);
   const mainAuth = getAuth();
+  const [externalPopup, setExternalPopup] = useState(null);
+  const [userData, setUserData] = useState(null);
   
 
   // const countRef = React.useCallback((element) => {
@@ -51,11 +53,51 @@ const UI = ({ }) => {
     setPassword("")
   };
 
+  const googleLogin = () => {
+    parent.postMessage({ pluginMessage: { type: 'login' } }, '*');
+}
+
+
+  //   useEffect(() => {
+  //     if (!externalPopup) {
+  //       return;
+  //     }
+  
+  //     const timer = setInterval(() => {
+  //       if (!externalPopup) {
+  //         timer && clearInterval(timer);
+  //         return;
+  //       }
+  //       const currentUrl = externalPopup.location.href;
+  //       if (!currentUrl) {
+  //         return;
+  //       }
+  //       const authorizationCode = new URLSearchParams(window.location.search).get('code');
+  //       if (authorizationCode) {
+  //         setAuth(true)
+  //         externalPopup.close();
+  //         console.log(`The popup URL has URL code param = ${code}`);
+  //         // YourApi.endpoint(code).then(() => {
+  //         //   setAuth(true);
+  //         // })
+  //         //   .catch(() => {
+  //         //     // API error
+  //         //   })
+  //         //   .finally(() => {
+  //         //     // clear timer at the end
+  //         //     setExternalPopup(null);
+  //         //     timer && clearInterval(timer);
+  //         //   })
+          
+  //       }
+  //     }, 500)
+  //   },
+  //   [externalPopup]
+  // )
 
 
 
-
-  // const googleLogin = async () => {
+  // const firebaseGoogleLogin = async () => {
   //   const result =  await signInWithGoogle();
   //     setUserName(result?.user?.displayName);
   //     setPhotoURL(result?.user?.photoURL);
@@ -72,18 +114,11 @@ const UI = ({ }) => {
 
         <div className={styles.loginContainer}>
           <h2 className={styles.Title}>Login to DevBud</h2>
-        <div className={styles.loginFields}> 
-          <p>
-           <input className={styles.input} required onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter Your Email" type="text" />
-          </p>
-          <p>
-           <input className={styles.input} required onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter your password" type="password" />
-          </p> 
-          </div>
-
+        
           <div className={styles.buttonContainer}>
-            <Button onClick={signUp}>Sign Up</Button>
-            <Button onClick={signIn}>Sign In</Button>
+            <Button onClick={googleLogin}>Login with Google</Button>
+            {/* <Button onClick={signUp}>Sign Up</Button> */}
+            {/* <Button onClick={signIn}>Sign In</Button> */}
           </div>
         </div> : <Devbud />}
 
@@ -94,4 +129,14 @@ const UI = ({ }) => {
 };
 
 export default UI;
+
+
+{/* <div className={styles.loginFields}> 
+          <p>
+           <input className={styles.input} required onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Enter Your Email" type="text" />
+          </p>
+          <p>
+           <input className={styles.input} required onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Enter your password" type="password" />
+          </p> 
+          </div> */}
 

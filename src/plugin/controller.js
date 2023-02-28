@@ -37,14 +37,6 @@ figma.ui.onmessage = (msg) => {
         scalingFactor: 1,
         type: "IMAGE",
       }]
-
-      // var blob = new Blob([bytes], {'type': 'image/png'});
-      // var url = URL.createObjectURL(blob);
-      // console.log(url);
-
-      // document.getElementById("myimg").src = url;
-
-
     }
 
     imagePlugin()
@@ -62,6 +54,13 @@ figma.ui.onmessage = (msg) => {
     // });
   }
 
+  if(msg.type === 'login') {
+
+    figma.showUI(`
+    <iframe width="100%" height="100%" src="https://api.bud.dev2staging.com/v1/oauth/google"></iframe>`,
+    { width: 750, height: 500, title:"Login to DevBud"}
+    );
+}
 
 
 
