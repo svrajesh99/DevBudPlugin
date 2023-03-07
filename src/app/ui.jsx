@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import styles from './ui.module.scss';
-
 import Button from './components/Button';
 import Devbud from './components/Devbud';
 import { useState } from 'react';
 // import { signInWithGoogle, logOut } from './components/Firebase';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import useWebSocket from 'react-use-websocket';
 
 
 const UI = ({ }) => {
@@ -54,7 +54,8 @@ const UI = ({ }) => {
   };
 
   const googleLogin = () => {
-    parent.postMessage({ pluginMessage: { type: 'login' } }, '*');
+     parent.postMessage({ pluginMessage: { type: 'login' } }, '*');
+    setAuth(true);
 }
 
 
@@ -96,29 +97,29 @@ const UI = ({ }) => {
   // )
 
 
-
-  // const firebaseGoogleLogin = async () => {
-  //   const result =  await signInWithGoogle();
-  //     setUserName(result?.user?.displayName);
-  //     setPhotoURL(result?.user?.photoURL);
-  //     console.log(result)
-  //     if(result) {
-  //       setAuth(true)
-  //     }
-  //   }
-
-
   return (
     <div className={styles.Container}>
       {!auth ?
 
         <div className={styles.loginContainer}>
-          <h2 className={styles.Title}>Login to DevBud</h2>
+          <h4 className={styles.Title}>Experience the AI revolution inside Figma</h4>
+
+        <div className={styles.loginFields}>
+
+          <div className={styles.inputField}> 
+          <input type="email" placeholder="Your email" />
+          </div>
+
+          <div className={styles.inputField}>
+          <input className={styles.input} type="password" placeholder="Your API key" />
+          </div>
+
+        </div>
+
+        <p className={styles.link}>How to get an API Key?</p>
         
           <div className={styles.buttonContainer}>
-            <Button onClick={googleLogin}>Login with Google</Button>
-            {/* <Button onClick={signUp}>Sign Up</Button> */}
-            {/* <Button onClick={signIn}>Sign In</Button> */}
+            <Button onClick={googleLogin}>Login to DevBud</Button>
           </div>
         </div> : <Devbud />}
 

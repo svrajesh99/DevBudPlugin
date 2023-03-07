@@ -1,5 +1,5 @@
 {
-  "name": "Devbud Practice",
+  "name": "Devbud",
   "id": "00000000",
   "api": "1.0.0",
   "main": "dist/code.js",
@@ -7,5 +7,6 @@
   "editorType": [
     "figma"
   ],
-  "enablePrivatePluginApi":true
+  "enablePrivatePluginApi": true,
+  "enableProposedApi": true
 }
