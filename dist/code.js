@@ -3,7 +3,7 @@
 
   figma.showUI(
     __html__,
-    { width: 750, height: 500}
+    { width: 350, height: 400, title: "DevBud", position: { x: 650, y: -300 }, }
   );
 
   figma.ui.onmessage = (msg) => {
@@ -55,12 +55,37 @@
     if(msg.type === 'login') {
 
       figma.showUI(`
-    <iframe width="100%" height="100%" src="https://api.bud.dev2staging.com/v1/oauth/google"></iframe>`,
+
+    <script>   
+      async function fetchCode (url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      const code = data.data.code;
+      const BASE_URL = "https://cors-anywhere.herokuapp.com/api.bud.dev2staging.com/v1/oauth/google?code="
+
+      const accessTokenURL = BASE_URL.concat(code);
+      window.open(accessTokenURL)
+      var responseAT = null;
+
+      function myFunction() {
+        if (responseAT == null) {
+           responseAT = fetch(window.open(accessTokenURL));
+        } else {
+          clearInterval(intervalID);
+          console.log(responseAT);
+        }
+      }
+      
+      var intervalID = setInterval(myFunction, 10);
+      
+    }
+
+    fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
+
+    </script>`,
       { width: 750, height: 500, title:"Login to DevBud"}
       );
   }
-
-
 
     figma.on('close', () => {
       });
