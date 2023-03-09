@@ -1,5 +1,6 @@
 
 
+
 figma.showUI(
   __html__,
   { width: 350, height: 400, title: "DevBud", position: { x: 650, y: -300 }, }
@@ -7,6 +8,7 @@ figma.showUI(
 
 
 let bytesData;
+let accessTokenURL;
 
 figma.ui.onmessage = (msg) => {
   if (msg.type === 'clone') {
@@ -41,8 +43,8 @@ figma.ui.onmessage = (msg) => {
 
     imagePlugin()
 
-    async function sendDatatoUI(bytes) {
-       figma.ui.postMessage({ bytesData : bytes }) }
+      async function sendDatatoUI(bytes) {
+       figma.postMessage({ bytesData : bytes }) }
 
   
   
@@ -56,38 +58,21 @@ figma.ui.onmessage = (msg) => {
 
   if(msg.type === 'login') {
 
-    figma.showUI(`
-
-    <script>   
       async function fetchCode (url) {
       const response = await fetch(url);
       const data = await response.json();
       const code = data.data.code;
-      const BASE_URL = "https://api.bud.dev2staging.com/v1/oauth/google?code="
+      const WINDOW_BASE_URL = "https://api.bud.dev2staging.com/v1/oauth/google?code="
+      const POLL_URL_BASE = "https://api.bud.dev2staging.com/v1/plugin-auth/code?code="
 
-      const accessTokenURL = BASE_URL.concat(code);
-      window.open(accessTokenURL)
-      var responseAT = null;
-
-      function myFunction() {
-        if (responseAT == null) {
-           responseAT = fetch(window.open(accessTokenURL));
-        } else {
-          clearInterval(intervalID);
-          console.log(responseAT);
-        }
+      const WINDOW_URL = WINDOW_BASE_URL.concat(code);
+      const POLL_URL = POLL_URL_BASE.concat(code);
+        figma.ui.postMessage({  windowURL : WINDOW_URL, pollURL : POLL_URL }) 
       }
-      
-      var intervalID = setInterval(myFunction, 10);
-      
-    }
 
     fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
 
-    </script>`,
-    { width: 750, height: 500, title:"Login to DevBud"}
-    );
-}
+  }   
 
   figma.on('close', () => {
     bytesData = null;

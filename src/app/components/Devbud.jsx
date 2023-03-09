@@ -24,28 +24,28 @@ const Devbud = () => {
       setTab(!tab);
     }
 
-    useEffect(() => {
-      // This is how we read messages sent from the plugin controller
-      window.onmessage = (event) => {
+    // useEffect(() => {
+    //   // This is how we read messages sent from the plugin controller
+    //   window.onmessage = (event) => {
         
-        let imgData=event.data.pluginMessage?.bytesData
+    //     let imgData=event.data.pluginMessage?.bytesData
 
-        //Converting img bytes to url for displaying
-        const uint8ToBase64 = (imgData) =>
-      btoa(
-          Array(imgData.length)
-              .fill('')
-              .map((_, i) => String.fromCharCode(imgData[i]))
-              .join('')
-      );
+    //     //Converting img bytes to url for displaying
+    //     const uint8ToBase64 = (imgData) =>
+    //   btoa(
+    //       Array(imgData.length)
+    //           .fill('')
+    //           .map((_, i) => String.fromCharCode(imgData[i]))
+    //           .join('')
+    //   );
   
-      let uint8data=uint8ToBase64(imgData)
-      const finalEncodedData = `data:image/*;base64,${uint8data}`
-      setImageURL(finalEncodedData)
-      }
+    //   let uint8data=uint8ToBase64(imgData)
+    //   const finalEncodedData = `data:image/*;base64,${uint8data}`
+    //   setImageURL(finalEncodedData)
+    //   }
   
   
-    }, []);
+    // }, []);
     
 
   return (

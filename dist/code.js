@@ -39,8 +39,8 @@
 
       imagePlugin();
 
-      async function sendDatatoUI(bytes) {
-         figma.ui.postMessage({ bytesData : bytes }); }
+        async function sendDatatoUI(bytes) {
+         figma.postMessage({ bytesData : bytes }); }
 
     
     
@@ -54,38 +54,21 @@
 
     if(msg.type === 'login') {
 
-      figma.showUI(`
+        async function fetchCode (url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        const code = data.data.code;
+        const WINDOW_BASE_URL = "https://api.bud.dev2staging.com/v1/oauth/google?code=";
+        const POLL_URL_BASE = "https://api.bud.dev2staging.com/v1/plugin-auth/code?code=";
 
-    <script>   
-      async function fetchCode (url) {
-      const response = await fetch(url);
-      const data = await response.json();
-      const code = data.data.code;
-      const BASE_URL = "https://cors-anywhere.herokuapp.com/api.bud.dev2staging.com/v1/oauth/google?code="
-
-      const accessTokenURL = BASE_URL.concat(code);
-      window.open(accessTokenURL)
-      var responseAT = null;
-
-      function myFunction() {
-        if (responseAT == null) {
-           responseAT = fetch(window.open(accessTokenURL));
-        } else {
-          clearInterval(intervalID);
-          console.log(responseAT);
+        const WINDOW_URL = WINDOW_BASE_URL.concat(code);
+        const POLL_URL = POLL_URL_BASE.concat(code);
+          figma.ui.postMessage({  windowURL : WINDOW_URL, pollURL : POLL_URL }); 
         }
-      }
-      
-      var intervalID = setInterval(myFunction, 10);
-      
-    }
 
-    fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
+      fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
 
-    </script>`,
-      { width: 750, height: 500, title:"Login to DevBud"}
-      );
-  }
+    }   
 
     figma.on('close', () => {
       });

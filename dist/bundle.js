@@ -29686,6 +29686,37 @@
 
 	var ReactDOM = reactDom.exports;
 
+	function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+	  try {
+	    var info = gen[key](arg);
+	    var value = info.value;
+	  } catch (error) {
+	    reject(error);
+	    return;
+	  }
+	  if (info.done) {
+	    resolve(value);
+	  } else {
+	    Promise.resolve(value).then(_next, _throw);
+	  }
+	}
+	function _asyncToGenerator(fn) {
+	  return function () {
+	    var self = this,
+	      args = arguments;
+	    return new Promise(function (resolve, reject) {
+	      var gen = fn.apply(self, args);
+	      function _next(value) {
+	        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+	      }
+	      function _throw(err) {
+	        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+	      }
+	      _next(undefined);
+	    });
+	  };
+	}
+
 	function _arrayWithHoles(arr) {
 	  if (Array.isArray(arr)) return arr;
 	}
@@ -30071,6 +30102,7 @@
 	// TODO(Babel 8): Remove this file.
 
 	var runtime = regeneratorRuntime$1.exports();
+	var regenerator = runtime;
 
 	// Copied from https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js#L736=
 	try {
@@ -38537,10 +38569,25 @@
 	var firebaseConfig={apiKey:"AIzaSyBdlKPdu6ay8FHV5c4adHoe_gqOaEEroW4",authDomain:"authtestfigma.firebaseapp.com",projectId:"authtestfigma",storageBucket:"authtestfigma.appspot.com",messagingSenderId:"236293878739",appId:"1:236293878739:web:492a006b7a32fcbcc43526"};// Initialize Firebase
 	initializeApp(firebaseConfig);new GoogleAuthProvider();getAuth();
 
-	var Devbud=function Devbud(){var _useState=react.exports.useState(""),_useState2=_slicedToArray(_useState,2);_useState2[0];var setImageURL=_useState2[1];var _useState3=react.exports.useState(),_useState4=_slicedToArray(_useState3,2),selectedTag=_useState4[0],setSelectedTag=_useState4[1];var tags=["Make Shorter","Longer","Funnier","Simpler","Casual","Formal","Tagline","Improve","Fix Spelling","Riskier","To Bullet Points","To Tagline","To Emojis"];var chooseTag=function chooseTag(selectedTag){setSelectedTag(selectedTag);};var _useState5=react.exports.useState(true),_useState6=_slicedToArray(_useState5,2),tab=_useState6[0],setTab=_useState6[1];//true stands for editing tab
-	var tabChange=function tabChange(){setTab(!tab);};react.exports.useEffect(function(){// This is how we read messages sent from the plugin controller
-	window.onmessage=function(event){var _event$data$pluginMes;var imgData=(_event$data$pluginMes=event.data.pluginMessage)===null||_event$data$pluginMes===void 0?void 0:_event$data$pluginMes.bytesData;//Converting img bytes to url for displaying
-	var uint8ToBase64=function uint8ToBase64(imgData){return btoa(Array(imgData.length).fill('').map(function(_,i){return String.fromCharCode(imgData[i]);}).join(''));};var uint8data=uint8ToBase64(imgData);var finalEncodedData="data:image/*;base64,".concat(uint8data);setImageURL(finalEncodedData);};},[]);return/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},tab?/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},/*#__PURE__*/React.createElement("h2",{className:styles$1.devbudTitle},"Welcome to DevBud!"),/*#__PURE__*/React.createElement("div",{className:styles$1.tabsAndLogout},/*#__PURE__*/React.createElement("div",{className:styles$1.tabs},/*#__PURE__*/React.createElement("p",{onClick:tabChange,className:"".concat(tab?styles$1.tabActive:styles$1.tab)},"Editing"),/*#__PURE__*/React.createElement("p",{onClick:tabChange,className:"".concat(!tab?styles$1.tabActive:styles$1.tab)},"Writing")),/*#__PURE__*/React.createElement("p",{className:styles$1.logout},"Log Out")),/*#__PURE__*/React.createElement("div",{className:styles$1.DevbudTags},tags.map(function(tag,key){return/*#__PURE__*/React.createElement(Tags,{tag:tag,key:key,chooseTag:chooseTag});})),/*#__PURE__*/React.createElement("div",{className:styles$1.custom},/*#__PURE__*/React.createElement("div",{className:styles$1.line}),/*#__PURE__*/React.createElement("h1",{className:styles$1.customText},"or type in a custom prompt"),/*#__PURE__*/React.createElement("div",{className:styles$1.line})),/*#__PURE__*/React.createElement("div",{className:styles$1.textareaDiv},/*#__PURE__*/React.createElement("textarea",{placeholder:"Write in Yoda style",value:selectedTag,className:styles$1.textarea})),/*#__PURE__*/React.createElement("div",{className:styles$1.devbudButton},"Let's Go!")):/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},/*#__PURE__*/React.createElement("h2",{className:styles$1.devbudTitle},"Welcome to DevBud!"),/*#__PURE__*/React.createElement("div",{className:styles$1.tabsAndLogout},/*#__PURE__*/React.createElement("div",{className:styles$1.tabs},/*#__PURE__*/React.createElement("p",{onClick:tabChange,className:"".concat(tab?styles$1.tabActive:styles$1.tab)},"Editing"),/*#__PURE__*/React.createElement("p",{onClick:tabChange,className:"".concat(!tab?styles$1.tabActive:styles$1.tab)},"Writing")),/*#__PURE__*/React.createElement("p",{className:styles$1.logout},"Log Out")),/*#__PURE__*/React.createElement("div",{className:styles$1.textareaDivWriting},/*#__PURE__*/React.createElement("textarea",{placeholder:"Create a tagline for a website",className:styles$1.textareaWriting})),/*#__PURE__*/React.createElement("div",{className:styles$1.devbudButton},"Let's Go!")));};var Tags=function Tags(_ref){var tag=_ref.tag,chooseTag=_ref.chooseTag;var _useState7=react.exports.useState(false),_useState8=_slicedToArray(_useState7,2),isTagged=_useState8[0],setIsTagged=_useState8[1];var tagged=function tagged(){if(!isTagged){chooseTag(tag);}else {chooseTag('');}setIsTagged(!isTagged);};return/*#__PURE__*/React.createElement("div",{onClick:tagged,className:"".concat(isTagged?styles$1.tagActive:styles$1.tags)},/*#__PURE__*/React.createElement("h3",null,tag));};
+	var Devbud=function Devbud(){var _useState=react.exports.useState(""),_useState2=_slicedToArray(_useState,2);_useState2[0];_useState2[1];var _useState3=react.exports.useState(),_useState4=_slicedToArray(_useState3,2),selectedTag=_useState4[0],setSelectedTag=_useState4[1];var tags=["Make Shorter","Longer","Funnier","Simpler","Casual","Formal","Tagline","Improve","Fix Spelling","Riskier","To Bullet Points","To Tagline","To Emojis"];var chooseTag=function chooseTag(selectedTag){setSelectedTag(selectedTag);};var _useState5=react.exports.useState(true),_useState6=_slicedToArray(_useState5,2),tab=_useState6[0],setTab=_useState6[1];//true stands for editing tab
+	var tabChange=function tabChange(){setTab(!tab);};// useEffect(() => {
+	//   // This is how we read messages sent from the plugin controller
+	//   window.onmessage = (event) => {
+	//     let imgData=event.data.pluginMessage?.bytesData
+	//     //Converting img bytes to url for displaying
+	//     const uint8ToBase64 = (imgData) =>
+	//   btoa(
+	//       Array(imgData.length)
+	//           .fill('')
+	//           .map((_, i) => String.fromCharCode(imgData[i]))
+	//           .join('')
+	//   );
+	//   let uint8data=uint8ToBase64(imgData)
+	//   const finalEncodedData = `data:image/*;base64,${uint8data}`
+	//   setImageURL(finalEncodedData)
+	//   }
+	// }, []);
+	return/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},tab?/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},/*#__PURE__*/React.createElement("h2",{className:styles$1.devbudTitle},"Welcome to DevBud!"),/*#__PURE__*/React.createElement("div",{className:styles$1.tabsAndLogout},/*#__PURE__*/React.createElement("div",{className:styles$1.tabs},/*#__PURE__*/React.createElement("p",{onClick:tabChange,className:"".concat(tab?styles$1.tabActive:styles$1.tab)},"Editing"),/*#__PURE__*/React.createElement("p",{onClick:tabChange,className:"".concat(!tab?styles$1.tabActive:styles$1.tab)},"Writing")),/*#__PURE__*/React.createElement("p",{className:styles$1.logout},"Log Out")),/*#__PURE__*/React.createElement("div",{className:styles$1.DevbudTags},tags.map(function(tag,key){return/*#__PURE__*/React.createElement(Tags,{tag:tag,key:key,chooseTag:chooseTag});})),/*#__PURE__*/React.createElement("div",{className:styles$1.custom},/*#__PURE__*/React.createElement("div",{className:styles$1.line}),/*#__PURE__*/React.createElement("h1",{className:styles$1.customText},"or type in a custom prompt"),/*#__PURE__*/React.createElement("div",{className:styles$1.line})),/*#__PURE__*/React.createElement("div",{className:styles$1.textareaDiv},/*#__PURE__*/React.createElement("textarea",{placeholder:"Write in Yoda style",value:selectedTag,className:styles$1.textarea})),/*#__PURE__*/React.createElement("div",{className:styles$1.devbudButton},"Let's Go!")):/*#__PURE__*/React.createElement("div",{className:styles$1.devbudContainer},/*#__PURE__*/React.createElement("h2",{className:styles$1.devbudTitle},"Welcome to DevBud!"),/*#__PURE__*/React.createElement("div",{className:styles$1.tabsAndLogout},/*#__PURE__*/React.createElement("div",{className:styles$1.tabs},/*#__PURE__*/React.createElement("p",{onClick:tabChange,className:"".concat(tab?styles$1.tabActive:styles$1.tab)},"Editing"),/*#__PURE__*/React.createElement("p",{onClick:tabChange,className:"".concat(!tab?styles$1.tabActive:styles$1.tab)},"Writing")),/*#__PURE__*/React.createElement("p",{className:styles$1.logout},"Log Out")),/*#__PURE__*/React.createElement("div",{className:styles$1.textareaDivWriting},/*#__PURE__*/React.createElement("textarea",{placeholder:"Create a tagline for a website",className:styles$1.textareaWriting})),/*#__PURE__*/React.createElement("div",{className:styles$1.devbudButton},"Let's Go!")));};var Tags=function Tags(_ref){var tag=_ref.tag,chooseTag=_ref.chooseTag;var _useState7=react.exports.useState(false),_useState8=_slicedToArray(_useState7,2),isTagged=_useState8[0],setIsTagged=_useState8[1];var tagged=function tagged(){if(!isTagged){chooseTag(tag);}else {chooseTag('');}setIsTagged(!isTagged);};return/*#__PURE__*/React.createElement("div",{onClick:tagged,className:"".concat(isTagged?styles$1.tagActive:styles$1.tags)},/*#__PURE__*/React.createElement("h3",null,tag));};
 
 	var dist = {};
 
@@ -39415,42 +39462,8 @@
 
 	}(dist));
 
-	var UI=function UI(_ref){_objectDestructuringEmpty(_ref);var _useState=react.exports.useState(),_useState2=_slicedToArray(_useState,2);_useState2[0];_useState2[1];var _useState3=react.exports.useState(),_useState4=_slicedToArray(_useState3,2);_useState4[0];_useState4[1];var _useState5=react.exports.useState(false),_useState6=_slicedToArray(_useState5,2),auth=_useState6[0],setAuth=_useState6[1];getAuth();var _useState7=react.exports.useState(null),_useState8=_slicedToArray(_useState7,2);_useState8[0];_useState8[1];var _useState9=react.exports.useState(null),_useState10=_slicedToArray(_useState9,2);_useState10[0];_useState10[1];// const countRef = React.useCallback((element) => {
-	var googleLogin=function googleLogin(){parent.postMessage({pluginMessage:{type:'login'}},'*');setAuth(true);};//   useEffect(() => {
-	//     if (!externalPopup) {
-	//       return;
-	//     }
-	//     const timer = setInterval(() => {
-	//       if (!externalPopup) {
-	//         timer && clearInterval(timer);
-	//         return;
-	//       }
-	//       const currentUrl = externalPopup.location.href;
-	//       if (!currentUrl) {
-	//         return;
-	//       }
-	//       const authorizationCode = new URLSearchParams(window.location.search).get('code');
-	//       if (authorizationCode) {
-	//         setAuth(true)
-	//         externalPopup.close();
-	//         console.log(`The popup URL has URL code param = ${code}`);
-	//         // YourApi.endpoint(code).then(() => {
-	//         //   setAuth(true);
-	//         // })
-	//         //   .catch(() => {
-	//         //     // API error
-	//         //   })
-	//         //   .finally(() => {
-	//         //     // clear timer at the end
-	//         //     setExternalPopup(null);
-	//         //     timer && clearInterval(timer);
-	//         //   })
-	//       }
-	//     }, 500)
-	//   },
-	//   [externalPopup]
-	// )
-	return/*#__PURE__*/React.createElement("div",{className:styles$1.Container},!auth?/*#__PURE__*/React.createElement("div",{className:styles$1.loginContainer},/*#__PURE__*/React.createElement("h4",{className:styles$1.Title},"Experience the AI revolution inside Figma"),/*#__PURE__*/React.createElement("div",{className:styles$1.loginFields},/*#__PURE__*/React.createElement("div",{className:styles$1.inputField},/*#__PURE__*/React.createElement("input",{type:"email",placeholder:"Your email"})),/*#__PURE__*/React.createElement("div",{className:styles$1.inputField},/*#__PURE__*/React.createElement("input",{className:styles$1.input,type:"password",placeholder:"Your API key"}))),/*#__PURE__*/React.createElement("p",{className:styles$1.link},"How to get an API Key?"),/*#__PURE__*/React.createElement("div",{className:styles$1.buttonContainer},/*#__PURE__*/React.createElement(Button,{onClick:googleLogin},"Login to DevBud"))):/*#__PURE__*/React.createElement(Devbud,null));};
+	var UI=function UI(_ref){_objectDestructuringEmpty(_ref);var _useState=react.exports.useState(),_useState2=_slicedToArray(_useState,2);_useState2[0];_useState2[1];var _useState3=react.exports.useState(),_useState4=_slicedToArray(_useState3,2);_useState4[0];_useState4[1];var _useState5=react.exports.useState(false),_useState6=_slicedToArray(_useState5,2),auth=_useState6[0],setAuth=_useState6[1];getAuth();var _useState7=react.exports.useState(null),_useState8=_slicedToArray(_useState7,2);_useState8[0];_useState8[1];var _useState9=react.exports.useState(null),_useState10=_slicedToArray(_useState9,2);_useState10[0];var setAccessToken=_useState10[1];var googleLogin=function googleLogin(){parent.postMessage({pluginMessage:{type:'login'}},'*');};react.exports.useEffect(function(){// This is how we read messages sent from the plugin controller
+	window.onmessage=function(event){var _event$data$pluginMes,_event$data$pluginMes2;var windowURL=(_event$data$pluginMes=event.data.pluginMessage)===null||_event$data$pluginMes===void 0?void 0:_event$data$pluginMes.windowURL;var pollURL=(_event$data$pluginMes2=event.data.pluginMessage)===null||_event$data$pluginMes2===void 0?void 0:_event$data$pluginMes2.pollURL;console.log(windowURL);console.log(pollURL);window.open(windowURL);var acTK=null;var rfTK=null;function fetchAccessToken(){return _fetchAccessToken.apply(this,arguments);}function _fetchAccessToken(){_fetchAccessToken=_asyncToGenerator(/*#__PURE__*/regenerator.mark(function _callee3(){var res,data;return regenerator.wrap(function _callee3$(_context3){while(1)switch(_context3.prev=_context3.next){case 0:if(acTK){_context3.next=11;break;}_context3.next=3;return fetch(pollURL);case 3:res=_context3.sent;_context3.next=6;return res.json();case 6:data=_context3.sent;acTK=data.data.accessToken;rfTK=data.data.refreshToken;_context3.next=16;break;case 11:clearInterval(fetchAccessTokenTimer);console.log("Access Token",acTK);console.log("Refresh Token",rfTK);setAccessToken(acTK);setAuth(true);case 16:case"end":return _context3.stop();}},_callee3);}));return _fetchAccessToken.apply(this,arguments);}var fetchAccessTokenTimer=setInterval(fetchAccessToken,1000);};},[]);return/*#__PURE__*/React.createElement("div",{className:styles$1.Container},!auth?/*#__PURE__*/React.createElement("div",{className:styles$1.loginContainer},/*#__PURE__*/React.createElement("h4",{className:styles$1.Title},"Experience the AI revolution inside Figma"),/*#__PURE__*/React.createElement("div",{className:styles$1.loginFields},/*#__PURE__*/React.createElement("div",{className:styles$1.inputField},/*#__PURE__*/React.createElement("input",{type:"email",placeholder:"Your email"})),/*#__PURE__*/React.createElement("div",{className:styles$1.inputField},/*#__PURE__*/React.createElement("input",{className:styles$1.input,type:"password",placeholder:"Your API key"}))),/*#__PURE__*/React.createElement("p",{className:styles$1.link},"How to get an API Key?"),/*#__PURE__*/React.createElement("div",{className:styles$1.buttonContainer},/*#__PURE__*/React.createElement(Button,{onClick:googleLogin},"Login to DevBud"))):/*#__PURE__*/React.createElement(Devbud,null));};
 
 	var css_248z = "* {\n  font-family: \"Open Sans\", sans-serif;\n  color: #212121;\n  margin: 0;\n  padding: 0;\n}";
 	styleInject(css_248z);

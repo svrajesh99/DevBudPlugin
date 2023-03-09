@@ -14,14 +14,9 @@ const UI = ({ }) => {
   const [password, setPassword] = useState();
   const [auth, setAuth] = useState(false);
   const mainAuth = getAuth();
-  const [externalPopup, setExternalPopup] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [accessToken,setAccessToken] = useState(null);
   
-
-  // const countRef = React.useCallback((element) => {
-  //   if (element) element.value = '5';
-  //   textbox.current = element;
-  // }, []);
 
   const signUp = () => {
     console.log(email)
@@ -54,47 +49,43 @@ const UI = ({ }) => {
   };
 
   const googleLogin = () => {
-     parent.postMessage({ pluginMessage: { type: 'login' } }, '*');
-    setAuth(true);
+    parent.postMessage({ pluginMessage: { type: 'login' } }, '*');
 }
 
+useEffect(() => {
+  // This is how we read messages sent from the plugin controller
+  window.onmessage = (event) => {
+    
+    let windowURL =event.data.pluginMessage?.windowURL;
+    let pollURL =event.data.pluginMessage?.pollURL;
+    console.log(windowURL)
+    console.log(pollURL)
+    window.open(windowURL)
 
-  //   useEffect(() => {
-  //     if (!externalPopup) {
-  //       return;
-  //     }
-  
-  //     const timer = setInterval(() => {
-  //       if (!externalPopup) {
-  //         timer && clearInterval(timer);
-  //         return;
-  //       }
-  //       const currentUrl = externalPopup.location.href;
-  //       if (!currentUrl) {
-  //         return;
-  //       }
-  //       const authorizationCode = new URLSearchParams(window.location.search).get('code');
-  //       if (authorizationCode) {
-  //         setAuth(true)
-  //         externalPopup.close();
-  //         console.log(`The popup URL has URL code param = ${code}`);
-  //         // YourApi.endpoint(code).then(() => {
-  //         //   setAuth(true);
-  //         // })
-  //         //   .catch(() => {
-  //         //     // API error
-  //         //   })
-  //         //   .finally(() => {
-  //         //     // clear timer at the end
-  //         //     setExternalPopup(null);
-  //         //     timer && clearInterval(timer);
-  //         //   })
-          
-  //       }
-  //     }, 500)
-  //   },
-  //   [externalPopup]
-  // )
+    let acTK = null;
+    let rfTK = null;
+
+     async function fetchAccessToken() {
+      if(!acTK ) {
+        const res = await fetch(pollURL);
+        const data = await res.json();
+        acTK = data.data.accessToken;
+        rfTK = data.data.refreshToken;
+      }
+      else {
+        clearInterval(fetchAccessTokenTimer);
+        console.log("Access Token", acTK)
+        console.log("Refresh Token", rfTK)
+        setAccessToken(acTK);
+        setAuth(true);
+      }
+    }
+
+    const fetchAccessTokenTimer = setInterval(fetchAccessToken, 1000);
+  }
+
+
+}, []);
 
 
   return (
