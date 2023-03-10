@@ -5,7 +5,7 @@ import Devbud from './components/Devbud';
 import { useState } from 'react';
 // import { signInWithGoogle, logOut } from './components/Firebase';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import useWebSocket from 'react-use-websocket';
+import axios from 'axios';
 
 
 const UI = ({ }) => {
@@ -14,7 +14,7 @@ const UI = ({ }) => {
   const [password, setPassword] = useState();
   const [auth, setAuth] = useState(false);
   const mainAuth = getAuth();
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState();
   const [accessToken,setAccessToken] = useState(null);
   
 
@@ -58,12 +58,13 @@ useEffect(() => {
     
     let windowURL =event.data.pluginMessage?.windowURL;
     let pollURL =event.data.pluginMessage?.pollURL;
-    console.log(windowURL)
-    console.log(pollURL)
+    // console.log(windowURL)
+    // console.log(pollURL)
     window.open(windowURL)
 
     let acTK = null;
     let rfTK = null;
+
 
      async function fetchAccessToken() {
       if(!acTK ) {
@@ -71,13 +72,28 @@ useEffect(() => {
         const data = await res.json();
         acTK = data.data.accessToken;
         rfTK = data.data.refreshToken;
+        // console.log(data)
+        // console.log(acTK)
       }
       else {
         clearInterval(fetchAccessTokenTimer);
-        console.log("Access Token", acTK)
-        console.log("Refresh Token", rfTK)
         setAccessToken(acTK);
         setAuth(true);
+
+        const url = 'https://api.bud.dev2staging.com/v1/users/me';
+
+          axios.get(url, {
+            headers: {
+              'Authorization': `Bearer ${acTK}`
+            }
+          })
+          .then(response => {
+            console.log(response.data.data.name);
+            setUserData(response.data.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
       }
     }
 
