@@ -1,26 +1,22 @@
 (function () {
   'use strict';
 
-  figma.showUI(
-    __html__,
-    { width: 500, height: 620, title: "Bud", position: { x: 650, y: -300 }, }
-  );
+  figma.showUI(__html__, { width: 350, height: 400, title: 'DevBud', position: { x: 650, y: -300 } });
 
-  figma.ui.onmessage = (msg) => {
+  figma.ui.onmessage = async (msg) => {
     if (msg.type === 'clone') {
-
       const imagePlugin = async () => {
         const node = figma.currentPage.selection[0];
-        const w =  node.width;
-        const h =  node.height;
-      
+        const w = node.width;
+        const h = node.height;
+
         // Export a 2x resolution PNG of the node
         const bytes = await node.exportAsync({
           format: 'PNG',
           constraint: { type: 'SCALE', value: 2 },
         });
 
-        if(node) {
+        if (node) {
           sendDatatoUI(bytes);
         }
 
@@ -29,21 +25,21 @@
         const frame = figma.createFrame();
         frame.x = 700;
         frame.resize(w, h);
-        frame.fills = [{
-          imageHash: image.hash,
-          scaleMode: "FILL",
-          scalingFactor: 1,
-          type: "IMAGE",
-        }];
+        frame.fills = [
+          {
+            imageHash: image.hash,
+            scaleMode: 'FILL',
+            scalingFactor: 1,
+            type: 'IMAGE',
+          },
+        ];
       };
 
       imagePlugin();
 
-        async function sendDatatoUI(bytes) {
-         figma.ui.postMessage({ type: 'imageCloning', bytesData : bytes }); }
-
-    
-    
+      async function sendDatatoUI(bytes) {
+        figma.postMessage({ bytesData: bytes });
+      }
 
       // This is how figma responds back to the ui
       // figma.ui.postMessage({
@@ -51,31 +47,43 @@
       //   message: `Created ${msg.count} Rectangles`,
       // });
     }
+    if (msg.type === 'Get_Access') {
+      figma.clientStorage
+        .getAsync('access_token')
+        .then((value) => {
+          console.log(`access_token: ${value}`);
+          figma.ui.postMessage({ Get_Access: true });
+        })
+        .catch((err) => console.error('Error retrieving value', err));
+    }
+    if (msg.type === 'login') {
+      async function fetchCode(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        const code = data.data.code;
+        const WINDOW_BASE_URL = 'https://api.bud.dev2staging.com/v1/oauth/google?code=';
+        const POLL_URL_BASE = 'https://api.bud.dev2staging.com/v1/plugin-auth/code?code=';
 
-    if(msg.type === 'login') {
-
-      async function fetchCode (url) {
-      const response = await fetch(url);
-      const data = await response.json();
-      const code = data.data.code;
-      console.log(code);
-      const WINDOW_BASE_URL = "https://api.bud.dev2staging.com/v1/oauth/google?code=";
-      const POLL_URL_BASE = "https://api.bud.dev2staging.com/v1/plugin-auth/code?code=";
-
-      const WINDOW_URL = WINDOW_BASE_URL.concat(code);
-      const POLL_URL = POLL_URL_BASE.concat(code);
-      console.log(WINDOW_URL, POLL_URL);
-        figma.ui.postMessage({  windowURL : WINDOW_URL, pollURL : POLL_URL }); 
+        const WINDOW_URL = WINDOW_BASE_URL.concat(code);
+        const POLL_URL = POLL_URL_BASE.concat(code);
+        figma.ui.postMessage({ windowURL: WINDOW_URL, pollURL: POLL_URL });
       }
-
-    fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
-
-  }    
-
+      fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
+    }
+    if (msg.type === 'accessToken') {
+      figma.clientStorage
+        .setAsync('access_token', msg.token)
+        .then(() => {
+          console.log('Access token stored successfully');
+        })
+        .catch((error) => console.error('Error storing access token:', error));
+   }
+    // if(msg.type==='remove_Access'){
+    //   console.log("remove_Access");
+    //       figma.clientStorage.removeAsync('access_token').then(() => console.log('Value removed from client storage!'));
+    // }
     figma.on('close', () => {
-      });
-
-
-   };
+    });
+  };
 
 })();
