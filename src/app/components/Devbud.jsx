@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { logOut } from './Firebase';
 import styles from '../ui.module.scss';
 
 const Devbud = () => {

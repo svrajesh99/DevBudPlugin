@@ -3,7 +3,7 @@
 
 figma.showUI(
   __html__,
-  { width: 350, height: 400, title: "DevBud", position: { x: 650, y: -300 }, }
+  { width: 500, height: 620, title: "Bud", position: { x: 650, y: -300 }, }
 )
 
 
@@ -44,7 +44,7 @@ figma.ui.onmessage = (msg) => {
     imagePlugin()
 
       async function sendDatatoUI(bytes) {
-       figma.postMessage({ bytesData : bytes }) }
+       figma.ui.postMessage({ type: 'imageCloning', bytesData : bytes }) }
 
   
   
@@ -58,21 +58,23 @@ figma.ui.onmessage = (msg) => {
 
   if(msg.type === 'login') {
 
-      async function fetchCode (url) {
-      const response = await fetch(url);
-      const data = await response.json();
-      const code = data.data.code;
-      const WINDOW_BASE_URL = "https://api.bud.dev2staging.com/v1/oauth/google?source=device&code="
-      const POLL_URL_BASE = "https://api.bud.dev2staging.com/v1/plugin-auth/code?code="
+    async function fetchCode (url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    const code = data.data.code;
+    console.log(code)
+    const WINDOW_BASE_URL = "https://api.bud.dev2staging.com/v1/oauth/google?code="
+    const POLL_URL_BASE = "https://api.bud.dev2staging.com/v1/plugin-auth/code?code="
 
-      const WINDOW_URL = WINDOW_BASE_URL.concat(code);
-      const POLL_URL = POLL_URL_BASE.concat(code);
-        figma.ui.postMessage({  windowURL : WINDOW_URL, pollURL : POLL_URL }) 
-      }
+    const WINDOW_URL = WINDOW_BASE_URL.concat(code);
+    const POLL_URL = POLL_URL_BASE.concat(code);
+    console.log(WINDOW_URL, POLL_URL)
+      figma.ui.postMessage({  windowURL : WINDOW_URL, pollURL : POLL_URL }) 
+    }
 
-    fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
+  fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
 
-  }   
+}    
 
   figma.on('close', () => {
     bytesData = null;
