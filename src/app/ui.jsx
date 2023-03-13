@@ -49,7 +49,6 @@ const UI = ({}) => {
 
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: 'Get_Access' } }, '*');
-    parent.postMessage({ pluginMessage: { type: 'clear_Access' } }, '*');
     window.onmessage = (event) => {
       let Access = event.data.pluginMessage?.Get_Access;
       if (Access === true) {
