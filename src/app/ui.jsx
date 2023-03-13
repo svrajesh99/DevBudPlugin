@@ -49,6 +49,7 @@ const UI = ({}) => {
 
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: 'Get_Access' } }, '*');
+    parent.postMessage({ pluginMessage: { type: 'clear_Access' } }, '*');
     window.onmessage = (event) => {
       let Access = event.data.pluginMessage?.Get_Access;
       if (Access === true) {
@@ -81,7 +82,7 @@ const UI = ({}) => {
                 },
               })
               .then((response) => {
-                console.log(response.data.data.name);
+                // console.log(response.data.data.name);
                 setUserData(response.data.data);
               })
               .catch((error) => {

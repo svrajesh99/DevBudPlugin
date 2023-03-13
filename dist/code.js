@@ -40,20 +40,19 @@
       async function sendDatatoUI(bytes) {
         figma.postMessage({ bytesData: bytes });
       }
-
-      // This is how figma responds back to the ui
-      // figma.ui.postMessage({
-      //   type: 'create-rectangles',
-      //   message: `Created ${msg.count} Rectangles`,
-      // });
     }
+    const interval = 1 * 60 * 1000;
+    const clearTokenintervel = () => {
+      figma.clientStorage.deleteAsync('access_token').catch((error) => console.error(error));
+    };
+
     if (msg.type === 'Get_Access') {
-      // figma.clientStorage.deleteAsync('access_token').catch((error) => console.error(error));
       figma.clientStorage
         .getAsync('access_token')
         .then((value) => {
           if (value) {
             figma.ui.postMessage({ Get_Access: true });
+            setInterval(clearTokenintervel, interval);
           } else {
             figma.ui.postMessage({ Get_Access: false });
           }
@@ -78,6 +77,7 @@
         .setAsync('access_token', msg.token)
         .then(() => {})
         .catch((err) => console.error('Error Saving value:', err));
+      setInterval(clearTokenintervel, interval);
     }
     figma.on('close', () => {
     });
