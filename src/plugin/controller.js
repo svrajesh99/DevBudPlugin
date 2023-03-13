@@ -43,7 +43,13 @@ figma.ui.onmessage = async (msg) => {
   }
   const interval = 1 * 60 * 1000;
   const clearTokenintervel = () => {
-    figma.clientStorage.deleteAsync('access_token').catch((error) => console.error(error));
+    figma.clientStorage
+      .deleteAsync('access_token')
+      .then(() => {
+        // console.log("Access Token Removed Successfully");
+      })
+      .catch((error) => console.error(error));
+    figma.ui.postMessage({ clear_Access: true });
   };
 
   if (msg.type === 'Get_Access') {

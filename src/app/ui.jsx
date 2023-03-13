@@ -51,6 +51,10 @@ const UI = ({}) => {
     parent.postMessage({ pluginMessage: { type: 'Get_Access' } }, '*');
     window.onmessage = (event) => {
       let Access = event.data.pluginMessage?.Get_Access;
+      let clear_Access=event.data.pluginMessage?.clear_Access;
+      if(clear_Access===true){
+        setAuth(false);
+      }
       if (Access === true) {
         setAuth(true);
       } else {
@@ -81,7 +85,7 @@ const UI = ({}) => {
                 },
               })
               .then((response) => {
-                // console.log(response.data.data.name);
+                console.log(response.data.data.name);
                 setUserData(response.data.data);
               })
               .catch((error) => {
