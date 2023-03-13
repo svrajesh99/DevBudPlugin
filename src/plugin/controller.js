@@ -49,13 +49,16 @@ figma.ui.onmessage = async (msg) => {
   }
   if (msg.type === 'Get_Access') {
     // figma.clientStorage.deleteAsync('access_token').catch((error) => console.error(error));
-    figma.clientStorage.getAsync('access_token').then((value) => {
-      if (value) {
-        figma.ui.postMessage({ Get_Access: true });
-      } else {
-        figma.ui.postMessage({ Get_Access: false });
-      }
-    });
+    figma.clientStorage
+      .getAsync('access_token')
+      .then((value) => {
+        if (value) {
+          figma.ui.postMessage({ Get_Access: true });
+        } else {
+          figma.ui.postMessage({ Get_Access: false });
+        }
+      })
+      .catch((err) => console.error('Error retrieving value:', err));
   }
   if (msg.type === 'login') {
     async function fetchCode(url) {
@@ -71,9 +74,10 @@ figma.ui.onmessage = async (msg) => {
     fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
   }
   if (msg.type === 'accessToken') {
-    figma.clientStorage.setAsync('access_token', msg.token).then(() => {
-      console.log('Access token stored successfully');
-    });
+    figma.clientStorage
+      .setAsync('access_token', msg.token)
+      .then(() => {})
+      .catch((err) => console.error('Error Saving value:', err));
   }
   figma.on('close', () => {
     bytesData = null;

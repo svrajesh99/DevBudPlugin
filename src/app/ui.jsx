@@ -83,6 +83,9 @@ const UI = ({}) => {
               .then((response) => {
                 console.log(response.data.data.name);
                 setUserData(response.data.data);
+              })
+              .catch((error) => {
+                console.error(error);
               });
           }
         }
