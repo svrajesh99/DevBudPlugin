@@ -48,13 +48,14 @@
       // });
     }
     if (msg.type === 'Get_Access') {
-      figma.clientStorage
-        .getAsync('access_token')
-        .then((value) => {
-          console.log(`access_token: ${value}`);
+      // figma.clientStorage.deleteAsync('access_token').catch((error) => console.error(error));
+      figma.clientStorage.getAsync('access_token').then((value) => {
+        if (value) {
           figma.ui.postMessage({ Get_Access: true });
-        })
-        .catch((err) => console.error('Error retrieving value', err));
+        } else {
+          figma.ui.postMessage({ Get_Access: false });
+        }
+      });
     }
     if (msg.type === 'login') {
       async function fetchCode(url) {
@@ -63,7 +64,6 @@
         const code = data.data.code;
         const WINDOW_BASE_URL = 'https://api.bud.dev2staging.com/v1/oauth/google?code=';
         const POLL_URL_BASE = 'https://api.bud.dev2staging.com/v1/plugin-auth/code?code=';
-
         const WINDOW_URL = WINDOW_BASE_URL.concat(code);
         const POLL_URL = POLL_URL_BASE.concat(code);
         figma.ui.postMessage({ windowURL: WINDOW_URL, pollURL: POLL_URL });
@@ -71,17 +71,10 @@
       fetchCode('https://api.bud.dev2staging.com/v1/plugin-auth/code');
     }
     if (msg.type === 'accessToken') {
-      figma.clientStorage
-        .setAsync('access_token', msg.token)
-        .then(() => {
-          console.log('Access token stored successfully');
-        })
-        .catch((error) => console.error('Error storing access token:', error));
-   }
-    // if(msg.type==='remove_Access'){
-    //   console.log("remove_Access");
-    //       figma.clientStorage.removeAsync('access_token').then(() => console.log('Value removed from client storage!'));
-    // }
+      figma.clientStorage.setAsync('access_token', msg.token).then(() => {
+        console.log('Access token stored successfully');
+      });
+    }
     figma.on('close', () => {
     });
   };

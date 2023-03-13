@@ -59,13 +59,14 @@ const UI = ({}) => {
         window.open(windowURL);
         let acTK = null;
         let rfTK = null;
-
         async function fetchAccessToken() {
           if (!acTK) {
-            const res = await fetch(pollURL);
-            const data = await res.json();
-            acTK = data.data.accessToken;
-            rfTK = data.data.refreshToken;
+            if (pollURL) {
+              const res = await fetch(pollURL);
+              const data = await res.json();
+              acTK = data.data.accessToken;
+              rfTK = data.data.refreshToken;
+            }
           } else {
             clearInterval(fetchAccessTokenTimer);
             window.parent.postMessage({ pluginMessage: { type: 'accessToken', token: acTK } }, '*');
@@ -82,9 +83,6 @@ const UI = ({}) => {
               .then((response) => {
                 console.log(response.data.data.name);
                 setUserData(response.data.data);
-              })
-              .catch((error) => {
-                console.log(error);
               });
           }
         }
